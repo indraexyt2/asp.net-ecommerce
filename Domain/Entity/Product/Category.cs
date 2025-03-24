@@ -11,7 +11,7 @@ namespace Domain.Entity.Product
     [Table("Categories")]
     public class Category : BaseEntity
     {
-        public required string Name { get; set; }
+        public required string? Name { get; set; }
 
         public List<Product> Products { get; set;} = new List<Product>();
     }

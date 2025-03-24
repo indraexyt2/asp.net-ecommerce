@@ -1,6 +1,7 @@
 ﻿using Application.Features.CategoryFeatures.CreateCategory;
 using Application.Features.CategoryFeatures.GetAllCategory;
 using Application.Features.CategoryFeatures.GetCategoryById;
+using Application.Features.CategoryFeatures.UpdateCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,13 @@ namespace Web.Controllers
         public async Task<ActionResult<GetCategoryByIdResponse>> Get(Guid id, CancellationToken ct)
         {
             var response = await _mediator.Send(new GetCategoryByIdRequest(id), ct);
+            return Ok(response);
+        }
+
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult<UpdateCategoryResponse>> Update(Guid id, [FromBody] UpdateCategoryDto request, CancellationToken ct)
+        {
+            var response = await _mediator.Send(new UpdateCategoryRequest(id, request.Name), ct);
             return Ok(response);
         }
     }

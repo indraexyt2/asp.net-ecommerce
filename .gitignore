@@ -1,0 +1,78 @@
+# Visual Studio-specific
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.pdb
+*.obj
+*.log
+*.tlog
+*.ipch
+*.aps
+*.ilk
+*.rsuser
+*.sln.ide
+*.sln.docstates
+
+*~
+
+# Build output
+bin/
+obj/
+out/
+TestResults/
+app.publish/
+*.tmp
+*.log
+*.tlog
+
+# NuGet packages
+*.nupkg
+packages/
+.nuget/
+project.lock.json
+project.assets.json
+paket-files/
+!packages/build/
+
+# User-specific files
+*.psess
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+*.user
+*.rsuser
+
+# ASP.NET-specific
+App_Data/
+AppCache/
+Logs/
+wwwroot/node_modules/
+node_modules/
+bower_components/
+dist/
+.env
+*.secret.json
+
+# Entity Framework
+*.mdf
+*.ldf
+Migrations/
+
+# Rider-specific
+.idea/
+*.sln.iml
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user

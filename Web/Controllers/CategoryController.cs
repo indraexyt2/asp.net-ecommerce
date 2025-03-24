@@ -1,7 +1,10 @@
-﻿using Application.Features.CategoryFeatures.CreateCategory;
+﻿using Application.Common.Exceptions;
+using Application.Features.CategoryFeatures.CreateCategory;
+using Application.Features.CategoryFeatures.DeleteCategory;
 using Application.Features.CategoryFeatures.GetAllCategory;
 using Application.Features.CategoryFeatures.GetCategoryById;
 using Application.Features.CategoryFeatures.UpdateCategory;
+using Application.Features.ProductFeatures.DeletProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +47,14 @@ namespace Web.Controllers
         {
             var response = await _mediator.Send(new UpdateCategoryRequest(id, request.Name), ct);
             return Ok(response);
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult<DeleteProductResponse>> Delete(Guid id, CancellationToken ct)
+        {
+            var response = await _mediator.Send(new DeleteCategoryRequest(id), ct);
+            if (!response.IsDeleted) throw new InternalServerException("Terjadi kesalahan pada server");
+            return NoContent();
         }
     }
 }

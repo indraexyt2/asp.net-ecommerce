@@ -1,4 +1,5 @@
 ﻿using Application.Features.CategoryFeatures.CreateCategory;
+using Application.Features.CategoryFeatures.GetAllCategory;
 using Application.Features.CategoryFeatures.GetCategoryById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,13 @@ namespace Web.Controllers
         public async Task<ActionResult<CreateCategoryResponse>> Add(CreateCategoryRequest request, CancellationToken ct)
         {
             var response = await _mediator.Send(request, ct);
+            return Ok(response);
+        }
+        
+        [HttpGet]
+        public async Task<ActionResult<List<GetAllCategoryResponse>>> GetAll(CancellationToken ct)
+        {
+            var response = await _mediator.Send(new GetAllCategoryRequest(), ct);
             return Ok(response);
         }
 
